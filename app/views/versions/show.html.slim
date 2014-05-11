@@ -2,4 +2,42 @@
 = render "tabs"
 
 section.page
-  = simple_format @version.description
+  - if @version.description
+    - # simple_format does too much
+    .description
+      = safe_join(@version.description.split(/\n{2,}/).map { |text| content_tag :p, text })
+
+  h2 Bundler
+
+  pre gem #{@version.name.inspect}, #{@version.specification.version.approximate_recommendation.inspect}
+
+  h2 Information
+
+  dl.dl-horizontal
+    dt Homepage
+    dd= link_to @version.specification.homepage, @version.specification.homepage
+
+    dt Email
+    dd= Array.wrap(@version.specification.email).map { |email| mail_to email }.to_sentence.html_safe
+
+    dt Date
+    dd= time_tag @version.specification.date
+
+  .row
+    - if @version.specification.dependencies.present?
+      .col-sm-6
+        h2 Dependencies
+        ul.versions
+          - @version.specification.dependencies.each do |dependency|
+            li.version
+              = link_to dependency.name, version_path(dependency.name)
+              = dependency.requirement
+
+    - if @version.specification.development_dependencies.present?
+      .col-sm-6
+        h2 Dev Dependencies
+        ul.versions
+        - @version.specification.development_dependencies.each do |dependency|
+          li.version
+            = link_to dependency.name, version_path(dependency.name)
+            = dependency.requirement
