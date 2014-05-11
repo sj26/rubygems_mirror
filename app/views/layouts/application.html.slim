@@ -10,6 +10,7 @@ html
 
       nav
         ul
+          li class=("active" if controller_name == "home") = link_to "Home", root_path
           li class=("active" if controller_name.in? "projects") = link_to "Gems", projects_path
 
     = yield
