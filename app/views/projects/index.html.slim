@@ -4,3 +4,5 @@ section.page
   ul
     - @projects.each do |project|
       li = link_to project, "#"
+
+  = paginate @projects

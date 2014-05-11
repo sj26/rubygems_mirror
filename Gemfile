@@ -14,6 +14,8 @@ gem "bootstrap-sass"
 
 # Views
 gem "slim-rails"
+gem "kaminari"
+gem "kaminari-bootstrap"
 
 group :development do
   gem "spring"
