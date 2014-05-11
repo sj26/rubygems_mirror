@@ -7,12 +7,12 @@ section.page
 
   p This is also a gem hosting service for rubygems and bundler. To install a gem from here:
 
-  pre gem install --clear-sources --source "http://rubygems.local/" GEM
+  pre gem install --clear-sources --source #{root_url.inspect} GEM
 
   p Or tell bundler to use this as a mirror:
 
-  pre bundle config --global mirror.https://rubygems.org "http://rubygems.local/"
+  pre bundle config --global mirror.https://rubygems.org #{root_url.inspect}
 
   p Or add this as the source in your Gemfile:
 
-  pre source "http://rubygems.local/"
+  pre source #{root_url.inspect}
