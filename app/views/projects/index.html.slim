@@ -3,6 +3,8 @@ section.page
 
   ul
     - @projects.each do |project|
-      li = link_to project, "#"
+      li
+        => link_to project, project.latest_version
+        | (#{project.latest_version.number})
 
   = paginate @projects
