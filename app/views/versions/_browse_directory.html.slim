@@ -8,6 +8,6 @@ section.page.directory
       - directory.each do |name, entry|
         tr
           td.name
-            = link_to name, browse_version_package_path(version, File.join(*[path.presence, name].compact))
+            = link_to name, browse_version_path(version, File.join(*[path.presence, name].compact))
             = content_tag :span, '/', class: 'divider grey-text' if entry.is_a? Hash
           td.size = number_to_human_size entry.size if entry.respond_to? :size

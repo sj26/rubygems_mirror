@@ -3,12 +3,15 @@ section.page
     - if GitHub::Markup.can_render? file.header.name
       .markup = raw GitHub::Markup.render file.header.name, file.read
 
+    - elsif file.image?
+      .image = image_tag raw_version_path(version, path)
+
     - elsif file.safe_to_colorize?
       = raw file.colorize options: {linenos: "table", lineanchors: "L", anchorlinenos: true}
 
     - elsif file.binary_mime_type?
       .binary
-        p Looks like this is a binary file.
+        p Looks like this is a binary file. You can #{link_to "download it", raw_version_path(version, path)}.
 
     - else
       .raw

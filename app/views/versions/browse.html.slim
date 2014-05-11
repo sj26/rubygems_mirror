@@ -1,19 +1,23 @@
-= render "versions/header"
-= render "versions/tabs"
+= render "header"
+= render "tabs"
 
 section.page
   ul.breadcrumb.pull-left
     li
-      = link_to "Root", browse_version_package_path(@version)
+      = link_to "Root", browse_version_path(@version)
     - subpaths_to @path do |component, subpath|
-      - if not current_page? browse_version_package_path(@version, subpath.presence)
+      - if not current_page? browse_version_path(@version, subpath.presence)
         li
           span.divider /
-          = link_to_unless_current component, browse_version_package_path(@version, subpath.presence)
+          = link_to_unless_current component, browse_version_path(@version, subpath.presence)
       - else
         li.active
           span.divider /
           = component
+
+  - unless @entry.is_a? Hash
+    nav.btn-group.btn-group-sm.pull-right
+      = link_to "Raw", raw_version_path(@version, @path), class: "btn btn-default"
 
 - if @entry.is_a? Hash
   = render "browse_directory", version: @version, path: @path, directory: @entry
