@@ -5,10 +5,10 @@ Created at [Railscamp XV](http://bne15.railscamps.org/) to aid gem discovery whi
 ## Features
 
 * Instructional home page
+* Gem listing
 
 ## Todo
 
-* Gem listing
 * Gem search
 * Gem description pages
 * Gem version browsing
