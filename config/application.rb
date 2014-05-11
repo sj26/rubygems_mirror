@@ -11,5 +11,6 @@ Bundler.require(*Rails.groups)
 
 module RubygemsMirror
   class Application < Rails::Application
+    config.autoload_paths << "lib"
   end
 end
