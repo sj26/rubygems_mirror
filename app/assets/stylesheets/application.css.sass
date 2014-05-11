@@ -6,11 +6,21 @@
 
 header.page
   @extend .container
+  @extend .clearfix
+
+  border-bottom: 1px solid $gray-lighter
+  margin-bottom: ($line-height-computed / 2)
 
   h1
-    border-bottom: 1px solid $gray-lighter
-    margin-bottom: ($line-height-computed / 2)
-    padding-bottom: ($line-height-computed / 2)
+    @extend .pull-left
+
+  nav
+    @extend .pull-right
+    margin-top: $line-height-computed
+
+    ul
+      @extend .nav
+      @extend .nav-pills
 
 section.page
   @extend .container

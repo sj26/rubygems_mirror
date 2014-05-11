@@ -8,6 +8,10 @@ html
     header.page
       h1 Rubygems Mirror
 
+      nav
+        ul
+          li class=("active" if controller_name.in? "projects") = link_to "Gems", projects_path
+
     = yield
 
     footer.page
