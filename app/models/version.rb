@@ -37,6 +37,18 @@ class Version < ActiveRecord::Base
     full_name
   end
 
+  def package_path
+    Rails.root.join("public", "gems", "#{full_name}.gem")
+  end
+
+  def package
+    @package ||= Package.new(package_path)
+  end
+
+  def specification
+    package.specification
+  end
+
 private
 
   def cache_full_name

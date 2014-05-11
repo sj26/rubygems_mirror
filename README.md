@@ -5,6 +5,7 @@ Created at [Railscamp XV](http://bne15.railscamps.org/) to aid gem discovery whi
 ## Features
 
 * Instructional home page
+* Gem specification extraction (/gems/rails-4.1.1.gemspec)
 * Gem listing
 * Gem version browsing
 
