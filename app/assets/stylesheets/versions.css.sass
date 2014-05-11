@@ -1,2 +1,27 @@
 nav.version
   margin-bottom: 1em
+
+article.content
+  border: 1px solid $gray-lighter
+  border-radius: $border-radius-base
+  overflow: auto
+
+  .markup
+    padding: ($line-height-computed * 2) ($line-height-computed * 1.5)
+    line-height: $line-height-large
+
+    > *:first-child
+      margin-top: 0 !important
+    > *:last-child
+      margin-bottom: 0 !important
+
+  .colorized
+    pre
+      border: 0
+      border-radius: 0
+      background: none
+      margin: 0
+    .linenos
+      border-right: 1px solid $gray-lighter
+      a
+        color: $gray-light
