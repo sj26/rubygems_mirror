@@ -1,4 +1,15 @@
 section.page
-  .content
-    .raw
-      pre = file.read
+  article.content.clearfix class=file.language.try(:default_alias_name)
+    - if GitHub::Markup.can_render? file.header.name
+      .markup = raw GitHub::Markup.render file.header.name, file.read
+
+    - elsif file.safe_to_colorize?
+      = raw file.colorize options: {linenos: "table", lineanchors: "L", anchorlinenos: true}
+
+    - elsif file.binary_mime_type?
+      .binary
+        p Looks like this is a binary file.
+
+    - else
+      .raw
+        pre = file.data

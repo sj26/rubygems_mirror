@@ -22,7 +22,7 @@ section.page
     - @package.data_file(@package.readme) do |file|
       #readme
         section.page
-          h2 = file.header.name
+          h3 = file.header.name
 
         = render "browse_file", version: @version, path: @path, file: file
 
