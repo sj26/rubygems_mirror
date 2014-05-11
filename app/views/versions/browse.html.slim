@@ -3,17 +3,12 @@
 
 section.page.breadcumby
   ul.breadcrumb.pull-left
-    li
-      = link_to "Root", browse_version_path(@version)
+    li = link_to "Root", browse_version_path(@version)
     - subpaths_to @path do |component, subpath|
       - if not current_page? browse_version_path(@version, subpath.presence)
-        li
-          span.divider /
-          = link_to_unless_current component, browse_version_path(@version, subpath.presence)
+        li = link_to_unless_current component, browse_version_path(@version, subpath.presence)
       - else
-        li.active
-          span.divider /
-          = component
+        li.active = component
 
   - unless @entry.is_a? Hash
     nav.btn-group.btn-group-sm.pull-right
