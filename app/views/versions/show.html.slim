@@ -1,13 +1,5 @@
+= render "header"
+= render "tabs"
+
 section.page
-  h2
-    => @version.name
-    small
-      | (
-      = @version.number
-      - if @version.platform?
-        =< @version.platform
-      | )
-
-  p = @version.summary
-
-  p = link_to "Other versions", action: :other
+  = simple_format @version.description

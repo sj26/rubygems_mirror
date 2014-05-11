@@ -1,0 +1,7 @@
+section.page
+  nav.version
+    ul.nav.nav-tabs
+      li class=("active" if current_page? @version)
+        = link_to "Information", @version
+      li class=("active" if current_page? action: :other)
+        = link_to "Versions", action: :other

@@ -1,6 +1,7 @@
-section.page
-  h2 Versions of #{@version.project}
+= render "header"
+= render "tabs"
 
+section.page
   ul
     - @version.project.versions.each do |version|
       li = link_to version, version

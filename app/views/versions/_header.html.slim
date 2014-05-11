@@ -1,0 +1,11 @@
+section.page
+  h2
+    => @version.name
+    small
+      | (
+      = @version.number
+      - if @version.platform?
+        =< @version.platform
+      | )
+
+  p = @version.summary
