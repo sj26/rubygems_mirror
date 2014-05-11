@@ -1,0 +1,32 @@
+= render "versions/header"
+= render "versions/tabs"
+
+section.page
+  ul.breadcrumb.pull-left
+    li
+      = link_to "Root", browse_version_package_path(@version)
+    - subpaths_to @path do |component, subpath|
+      - if not current_page? browse_version_package_path(@version, subpath.presence)
+        li
+          span.divider /
+          = link_to_unless_current component, browse_version_package_path(@version, subpath.presence)
+      - else
+        li.active
+          span.divider /
+          = component
+
+- if @entry.is_a? Hash
+  = render "browse_directory", version: @version, path: @path, directory: @entry
+
+  - if @path.blank? and @package.readme
+    - @package.data_file(@package.readme) do |file|
+      #readme
+        section.page
+          h2 = file.header.name
+
+        = render "browse_file", version: @version, path: @path, file: file
+
+- else
+  - @package.data_file(@path) do |file|
+    = render "browse_file", version: @version, path: @path, file: file
+
