@@ -2,7 +2,7 @@ doctype
 html
   head
     title Rubygems Mirror
-    = stylesheet_link_tag "application", media: "all", data: {turbolinks_track: true}
+    = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
   body
     header.page
@@ -17,4 +17,4 @@ html
     footer.page
       p Made for #{link_to "Railscamp 15", "http://bne15.railscamps.org"} by #{link_to "@sj26", "http://sj26.com"}
 
-    = javascript_include_tag "application", data: {turbolinks_track: true}
+    = javascript_include_tag "application"
