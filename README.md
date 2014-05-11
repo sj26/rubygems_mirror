@@ -6,12 +6,12 @@ Created at [Railscamp XV](http://bne15.railscamps.org/) to aid gem discovery whi
 
 * Instructional home page
 * Gem listing
+* Gem version browsing
 
 ## Todo
 
 * Gem search
 * Gem description pages
-* Gem version browsing
 * Gem package file browsing
 * Gem documentation generation and view
 * Gem documentation search
