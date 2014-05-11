@@ -1,0 +1,6 @@
+section.page
+  h2 Versions of #{@version.project}
+
+  ul
+    - @version.project.versions.each do |version|
+      li = link_to version, version

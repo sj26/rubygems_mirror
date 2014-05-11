@@ -5,6 +5,9 @@ class VersionsController < ApplicationController
   def show
   end
 
+  def other
+  end
+
 private
 
   def redirect_bare_project
