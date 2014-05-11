@@ -1,0 +1,19 @@
+h1 Rubygems Mirror
+
+h2 What can I do?
+
+p Search for a gem above, or just go ahead and browse, and you can check out dependencies, versions available, browse inside the gem's files just like GitHub, and view documentation just like RubyDoc.info.
+
+h2 Using this as a gem source
+
+p This is also a gem hosting service for rubygems and bundler. To install a gem from here:
+
+pre gem install --clear-sources --source "http://rubygems.local/" GEM
+
+p Or tell bundler to use this as a mirror:
+
+pre bundle config --global mirror.https://rubygems.org "http://rubygems.local/"
+
+p Or add this as the source in your Gemfile:
+
+pre source "http://rubygems.local/"
