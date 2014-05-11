@@ -7,10 +7,15 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore gems and metadata
+/public/gems
+/public/metadata
+/public/quick
+/public/specs.4.8.gz
+/public/latest_specs.4.8.gz
+/public/prerelease_specs.4.8.gz
+/public/Marshal.4.8.Z
