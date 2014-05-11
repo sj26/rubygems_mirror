@@ -2,7 +2,7 @@ section.page
   article.content.clearfix class=file.language.try(:default_alias_name)
     - if GitHub::Markup.can_render? file.header.name
       .markup
-        = raw GitHub::Markup.render file.header.name, file.read
+        = render_markup file.header.name, file.read
 
     - elsif file.image?
       .image
@@ -12,10 +12,11 @@ section.page
       .colorized
         = raw file.colorize options: {linenos: "table", lineanchors: "L", anchorlinenos: true}
 
-    - elsif file.binary_mime_type?
-      .binary
-        p Looks like this is a binary file. You can #{link_to "download it", raw_version_path(version, path)}.
-
-    - else
+    - elsif file.viewable?
       .raw
         pre = file.data
+
+    - else
+      .binary
+        p Sorry, this file is a bit too much to handle. You can #{link_to "download it", raw_version_path(version, path)}.
+

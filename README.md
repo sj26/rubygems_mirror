@@ -8,12 +8,14 @@ Created at [Railscamp XV](http://bne15.railscamps.org/) to aid gem discovery whi
 * Gem specification extraction (/gems/rails-4.1.1.gemspec)
 * Gem listing
 * Gem version browsing
+* Gem description pages
 * Gem package file browsing
+  * Markup rendering
+  * Code highlighting
 
 ## Todo
 
 * Gem search
-* Gem description pages
 * Gem documentation generation and view
 * Gem documentation search
 * Rake tasks for mirroring
