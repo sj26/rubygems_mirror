@@ -1,21 +1,25 @@
-section.page
-  h2
-    => @version.name
-    small
-      | (
-      = @version.number
-      - if @version.platform?
-        =< @version.platform
-      | )
+section.page.version-header
+  .clearfix
+    h2.pull-left
+      => @version.name
+      small
+        | (
+        = @version.number
+        - if @version.platform?
+          =< @version.platform
+        | )
+    nav.btn-group.pull-right
+      = link_to "Download", version_package_path(@version), class: "btn btn-default"
+      = link_to "Specification", version_specification_path(@version), class: "btn btn-default"
 
   p = @version.summary
 
-section.page
-  nav.version
+section.page.version-tabs
+  nav
     ul.nav.nav-tabs
       li class=("active" if controller_action == "versions#show")
         = link_to "Information", version_path(@version)
       li class=("active" if controller_action == "versions#other")
         = link_to "Versions", other_version_path(@version)
-      li class=("active" if controller_action == "package#browse")
+      li class=("active" if controller_action == "packages#browse")
         = link_to "Browse", browse_version_path(@version)
