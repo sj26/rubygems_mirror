@@ -1,0 +1,11 @@
+section.page.search
+  h2 Results for &ldquo;#{query_param}&rdquo;
+
+  ul
+    - @projects.each do |project|
+      li
+        = link_to project, version_path(project.latest_version)
+        span.text-muted
+          |  (#{project.latest_version.number})
+
+  = paginate @projects

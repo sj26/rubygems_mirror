@@ -4,6 +4,7 @@ gem "rails", "4.1.1"
 
 # Database
 gem "pg"
+gem "textacular"
 
 # Assets
 gem "sass-rails"

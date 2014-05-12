@@ -12,10 +12,11 @@ Created at [Railscamp XV](http://bne15.railscamps.org/) to aid gem discovery whi
 * Gem package file browsing
   * Markup rendering
   * Code highlighting
+* Gem search
 
 ## Todo
 
-* Gem search
+* Better search
 * Gem documentation generation and view
 * Gem documentation search
 * Gem license exposure

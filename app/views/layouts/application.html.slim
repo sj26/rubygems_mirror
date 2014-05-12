@@ -12,6 +12,9 @@ html
         ul
           li class=("active" if controller_name == "home") = link_to "Home", root_path
           li class=("active" if controller_name.in? "projects") = link_to "Gems", projects_path
+          li = form_tag search_projects_path, method: :get, class: "form-inline" do
+            = search_field_tag :q, (query_param if controller_action == "projects#search"), placeholder: "Search...", class: "form-control"
+
 
     = yield
 
