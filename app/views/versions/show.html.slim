@@ -8,7 +8,7 @@ section.page
 
   h2 Bundler
 
-  pre gem #{@version.name.inspect}, #{@version.specification.version.approximate_recommendation.inspect}
+  = raw Pygments.highlight(%{gem #{@version.name.inspect}, #{@version.specification.version.approximate_recommendation.inspect}}, lexer: :ruby)
 
   h2 Information
 

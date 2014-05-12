@@ -7,12 +7,12 @@ section.page
 
   p This is also a gem hosting service for rubygems and bundler. To install a gem from here:
 
-  pre gem install --clear-sources --source #{root_url.inspect} GEM
+  = raw Pygments.highlight(%{gem install --clear-sources --source #{root_url.inspect} GEM}, lexer: :sh).sub("GEM", "<em>GEM</em>")
 
   p Or tell bundler to use this as a mirror:
 
-  pre bundle config --global mirror.https://rubygems.org #{root_url.inspect}
+  = raw Pygments.highlight(%{bundle config --global mirror.https://rubygems.org #{root_url.inspect}}, lexer: :sh)
 
   p Or add this as the source in your Gemfile:
 
-  pre source #{root_url.inspect}
+  = raw Pygments.highlight(%{source #{root_url.inspect}}, lexer: :ruby)
