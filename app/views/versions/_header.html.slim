@@ -9,8 +9,8 @@ section.page.version-header
           =< @version.platform
         | )
     nav.btn-group.pull-right
-      = link_to "Download", version_package_path(@version), class: "btn btn-default"
-      = link_to "Specification", version_specification_path(@version), class: "btn btn-default"
+      = link_to "Download", version_path(@version, format: "gem"), class: "btn btn-default"
+      = link_to "Specification", version_path(@version, format: "gemspec"), class: "btn btn-default"
 
   p = @version.summary
 

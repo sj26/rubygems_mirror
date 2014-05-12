@@ -2,14 +2,21 @@ class VersionsController < ApplicationController
   before_action :redirect_bare_project, only: [:show]
   before_action :prepare_version
 
-  respond_to :html, :json
-
   def show
-    respond_with @version
+    respond_to do |format|
+      format.html
+      format.json { render json: @version }
+      format.gem { send_file @version.package_path }
+      format.gemspec { send_data @version.package.metadata_ruby, disposition: :inline }
+      format.yaml { send_data @version.package.metadata_yaml }
+    end
   end
 
   def other
-    respond_with @version.other_versions
+    respond_to do |format|
+      format.html
+      format.json { render json: @version.other_versions }
+    end
   end
 
 private

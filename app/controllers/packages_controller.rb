@@ -2,17 +2,6 @@ class PackagesController < ApplicationController
   before_action :prepare_version
   before_action :prepare_package
 
-  def show
-    send_file @version.package_path, format: :gemspec
-  end
-
-  def specification
-    respond_to do |format|
-      format.yaml { send_data @package.metadata_yaml }
-      format.gemspec { send_data @package.metadata.to_ruby }
-    end
-  end
-
   def browse
     @entry = @package[path_param]
   end

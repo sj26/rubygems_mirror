@@ -4,4 +4,4 @@
 # Mime::Type.register "text/richtext", :rtf
 
 Mime::Type.register "application/x-ruby-gem", :gem
-Mime::Type.register "application/x-ruby-gemspec", :gemspec
+Mime::Type.register "text/x-ruby-gemspec", :gemspec
