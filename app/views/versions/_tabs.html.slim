@@ -1,9 +1,0 @@
-section.page
-  nav.version
-    ul.nav.nav-tabs
-      li class=("active" if action_name == "show")
-        = link_to "Information", version_path(@version)
-      li class=("active" if action_name == "other")
-        = link_to "Versions", other_version_path(@version)
-      li class=("active" if action_name == "browse")
-        = link_to "Browse", browse_version_path(@version)

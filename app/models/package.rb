@@ -49,12 +49,20 @@ class Package
     raise MetadataNotFound
   end
 
-  def metadata
-    @metadata ||= Rails.cache.fetch "GemFile/#{path}/metadata" do
+  def metadata_yaml
+    @metadata_yaml ||= Rails.cache.fetch "GemFile/#{path}/metadata_yaml" do
       metadata_file do |metadata_file|
-        Gem::Specification.from_yaml metadata_file
+        metadata_file.read
       end
     end
+  end
+
+  def metadata
+    @metadata ||= Gem::Specification.from_yaml metadata_yaml
+  end
+
+  def metadata_ruby
+    specification.to_ruby
   end
 
   def data_tar_file &block

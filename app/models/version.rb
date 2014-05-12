@@ -1,5 +1,6 @@
 class Version < ActiveRecord::Base
   belongs_to :project
+  has_many :other_versions, through: :project, source: :versions
 
   validates :number, format: {with: Patterns::VERSION}
   validates :platform, format: {with: Patterns::PLATFORM}

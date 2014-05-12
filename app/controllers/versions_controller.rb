@@ -1,26 +1,15 @@
 class VersionsController < ApplicationController
-  before_action :redirect_bare_project
+  before_action :redirect_bare_project, only: [:show]
   before_action :prepare_version
-  before_action :prepare_package, only: [:browse, :raw]
+
+  respond_to :html, :json
 
   def show
-    respond_to do |format|
-      format.html
-      format.gem { send_file @version.package_path }
-      format.gemspec { send_data @version.package.specification.to_ruby, type: :gemspec }
-    end
+    respond_with @version
   end
 
   def other
-  end
-
-  def browse
-  end
-
-  def raw
-    @package.data_file(@path) do |file|
-      send_data file.data, filename: file.name, type: file.content_type, disposition: file.disposition
-    end
+    respond_with @version.other_versions
   end
 
 private
@@ -31,14 +20,11 @@ private
     end
   end
 
-  def prepare_version
-    @version = Version.find_by_full_name!(params[:id])
+  def version_param
+    params.require(:id)
   end
 
-  def prepare_package
-    @package = @version.package
-    @path = request.path_parameters[:path].to_s
-    @entry = @package[@path]
-    raise "not found" unless @entry.present?
+  def prepare_version
+    @version = Version.find_by_full_name!(version_param)
   end
 end

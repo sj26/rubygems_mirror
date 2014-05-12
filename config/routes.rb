@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  resources :projects, path: :gems, only: [:index]
+  # URLs are carefully designed, resource helpers don't suit.
 
-  resources :versions, path: :gems, only: [:show], constraints: {id: Patterns::NONGREEDY_SLUG, format: /html|json|gem|gemspec/} do
-    member do
-      get :other
-      get :browse, path: "browse(/*path)"
-      get :raw, path: "raw/*path"
-    end
-  end
+  get "gems", to: "projects#index", as: :projects
+
+  get "gems/:id(.:format)", to: "versions#show", as: :version, constraints: {id: Patterns::NONGREEDY_SLUG, format: /html|json/}
+  get "gems/:id(.:format)/other", to: "versions#other", as: :other_version, constraints: {id: Patterns::NONGREEDY_SLUG, format: /html|json/}
+
+  get "gems/:version_id(.:format)", to: "package#show", as: :package, constraints: {version_id: Patterns::NONGREEDY_SLUG, format: /gem/}
+  get "gems/:version_id(.:format)", to: "package#specification", as: :package_specification, constraints: {version_id: Patterns::NONGREEDY_SLUG, format: /gemspec|ya?ml/}
+  get "gems/:version_id/browse(/*path)", to: "packages#browse", as: :browse_version, constraints: {version_id: Patterns::NONGREEDY_SLUG, path: /.+/}
+  get "gems/:version_id/raw(/*path)", to: "packages#raw", as: :raw_version, constraints: {version_id: Patterns::NONGREEDY_SLUG, path: /.+/}
 
   root to: "home#show"
 end

@@ -1,10 +1,9 @@
-= render "header"
-= render "tabs"
+= render "versions/header"
 
 section.page.breadcumby
   ul.breadcrumb.pull-left
     li = link_to "Root", browse_version_path(@version)
-    - subpaths_to @path do |component, subpath|
+    - subpaths_to path_param do |component, subpath|
       - if not current_page? browse_version_path(@version, subpath.presence)
         li = link_to_unless_current component, browse_version_path(@version, subpath.presence)
       - else
@@ -12,20 +11,19 @@ section.page.breadcumby
 
   - unless @entry.is_a? Hash
     nav.btn-group.btn-group-sm.pull-right
-      = link_to "Raw", raw_version_path(@version, @path), class: "btn btn-default"
+      = link_to "Raw", raw_version_path(@version, path_param), class: "btn btn-default"
 
 - if @entry.is_a? Hash
-  = render "browse_directory", version: @version, path: @path, directory: @entry
+  = render "browse_directory", version: @version, path: path_param, directory: @entry
 
-  - if @path.blank? and @package.readme
+  - if path_param.blank? and @package.readme
     - @package.data_file(@package.readme) do |file|
       #readme
         section.page
           h3 = file.header.name
 
-        = render "browse_file", version: @version, path: @path, file: file
+        = render "browse_file", version: @version, path: path_param, file: file
 
 - else
-  - @package.data_file(@path) do |file|
-    = render "browse_file", version: @version, path: @path, file: file
-
+  - @package.data_file(path_param) do |file|
+    = render "browse_file", version: @version, path: path_param, file: file
