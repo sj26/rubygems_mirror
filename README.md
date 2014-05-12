@@ -18,6 +18,7 @@ Created at [Railscamp XV](http://bne15.railscamps.org/) to aid gem discovery whi
 * Gem search
 * Gem documentation generation and view
 * Gem documentation search
+* Gem license exposure
 * Rake tasks for mirroring
 * Mirroring on demand?
 * Rake tasks for indexing
